@@ -1,0 +1,79 @@
+[
+    {
+        "RMSE-mean": 2273463.89027486,
+        "RMSE-STD": 696388.0119155522,
+        "exec-time-sec": 34.529175758361816,
+        "category_encoding": "onehot",
+        "valid_mode": "split",
+        "n_folds": 100,
+        "k_best": 20,
+        "n_jobs": 4,
+        "n_estimators": 100,
+        "max_features": 0.2,
+        "max_depth": 2,
+        "regressor_type": "rfr",
+        "drop_outliers": true
+    },
+    {
+        "RMSE-mean": 2378698.6931880657,
+        "RMSE-STD": 773110.8128438677,
+        "exec-time-sec": 34.17417073249817,
+        "category_encoding": "empyrical_bayes",
+        "valid_mode": "split",
+        "n_folds": 100,
+        "k_best": 20,
+        "n_jobs": 4,
+        "n_estimators": 100,
+        "max_features": 0.2,
+        "max_depth": 2,
+        "regressor_type": "rfr",
+        "drop_outliers": true
+    },
+    {
+        "RMSE-mean": 2350349.7176171397,
+        "RMSE-STD": 760802.3482426928,
+        "exec-time-sec": 33.3131959438324,
+        "category_encoding": "count",
+        "valid_mode": "split",
+        "n_folds": 100,
+        "k_best": 20,
+        "n_jobs": 4,
+        "n_estimators": 100,
+        "max_features": 0.2,
+        "max_depth": 2,
+        "regressor_type": "rfr",
+        "drop_outliers": true
+    },
+    {
+        "RMSE-mean": 2497804.5499549876,
+        "RMSE-STD": 782948.3619992139,
+        "exec-time-sec": 8.38352084159851,
+        "category_encoding": "onehot",
+        "valid_mode": "split",
+        "n_folds": 100,
+        "regressor_type": "huber",
+        "epsilon": 1.2,
+        "drop_outliers": false
+    },
+    {
+        "RMSE-mean": 2448658.608769867,
+        "RMSE-STD": 770942.4578697389,
+        "exec-time-sec": 7.390393018722534,
+        "category_encoding": "onehot",
+        "valid_mode": "split",
+        "n_folds": 100,
+        "regressor_type": "huber",
+        "epsilon": 1.2,
+        "drop_outliers": true
+    },
+    {
+        "RMSE-mean": 2339395.655150676,
+        "RMSE-STD": 724216.8232710724,
+        "exec-time-sec": 9.993170738220215,
+        "category_encoding": "onehot",
+        "valid_mode": "split",
+        "n_folds": 100,
+        "regressor_type": "ard",
+        "drop_outliers": true
+    }
+]
