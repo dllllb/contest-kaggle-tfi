@@ -186,4 +186,4 @@ def test_validate():
         "drop_outliers": True,
         'n_folds': 3,
     }
-    print(validate(params))
+    print(validate(init_params(params)))
