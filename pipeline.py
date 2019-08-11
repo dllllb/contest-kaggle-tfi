@@ -2,21 +2,20 @@ import math
 import pandas as pd
 import numpy as np
 from sklearn.base import BaseEstimator
+from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.feature_selection import SelectKBest, f_regression
-from sklearn.gaussian_process import GaussianProcess, GaussianProcessRegressor
 from sklearn.linear_model import HuberRegressor, ARDRegression
 from sklearn.metrics import mean_squared_error
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import FunctionTransformer
 from sklearn.base import clone as sk_clone
 from sklearn.metrics import make_scorer
-from sklearn.preprocessing import Imputer
 
-import dstools.dstools.ml.transformers as tr
-    
+from transformer import count_encoder
+
 
 def update_model_stats(stats_file, params, results):
     import json
@@ -133,18 +132,14 @@ def validate(params):
             df2dict,
             DictVectorizer(sparse=False),
         )
-    elif category_encoding == 'empyrical_bayes':
-        transf = make_pipeline(
-        FunctionTransformer(days_to_delta, validate=False),
-            tr.empirical_bayes_encoder_normal_distr(),
-            Imputer()
-        )
     elif category_encoding == 'count':
         transf = make_pipeline(
             FunctionTransformer(days_to_delta, validate=False),
-            tr.count_encoder(),
-            Imputer()
+            count_encoder(),
+            SimpleImputer()
         )
+    else:
+        raise AssertionError(f'unknown category encoding type: {category_encoding}')
     
     reg_type = params['regressor_type']
     
@@ -175,7 +170,7 @@ def validate(params):
 
 def test_validate():
     params = {
-        "category_encoding": "empyrical_bayes",
+        "category_encoding": "count",
         "valid_mode": "split",
         "k_best": 20,
         "n_jobs": 4,
